@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="money.png">
+    <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Tracker</title>
+</head>
+<body>
+
+<div class="mainScreen"></div>
+
+<div class="subheading">
+    Как уложиться в бюджет, если не можешь удержать все затраты в голове?
+</div>
+
+<div class="heading">
+    B U D G E T&nbsp;&nbsp;T R A C K E R
+</div>
+
+<div class="description">
+    Этот сайт подходит тем, кто любит раскладывать всё по полочкам, и тем, кто ещё не умеет распределять свои затраты.
+    Здесь вы сами сможете установить свой бюджет, выделить подходящие категории затрат и поставить на них лимиты. Если
+    по какой-то из категорий лимит будет превышен ‒ вы увидите сообщение об этом.
+</div>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="meter">
+                <div class="meter__meter-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="square square--header"><p class="square__text square__text--bold">Категория</p></div>
+        </div>
+        <div class="col-3">
+            <div class="square square--header"><p class="square__text square__text--bold">Планируется потратить</p>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="square square--header"><p class="square__text square__text--bold">Потрачено</p></div>
+        </div>
+        <div class="col-2">
+            <div class="square square--header"><p class="square__text square__text--bold">Остаток</p></div>
+        </div>
+        <div class="col-1">
+            <div class="square square--header"><p class="square__text square__text--bold">Упр</p></div>
+        </div>
+    </div>
+    <div class="content"></div>
+    <form class="row" name="form">
+        <div class="col-3">
+            <div class="square">
+                <input type="text" name="category" class="calc-input"
+                       placeholder="Введите категорию">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="square">
+                <input type="text" name="plan" class="calc-input"
+                       placeholder="Введите сумму">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="square">
+                <input type="text" name="spent" class="calc-input"
+                       placeholder="Введите сумму">
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="square"></div>
+        </div>
+    </form>
+    <button class="button right">+</button>
+</div>
+
+<script src='script_trial.js'></script>
+</body>
+</html>
