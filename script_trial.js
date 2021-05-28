@@ -4,12 +4,18 @@ const progressBar = document.querySelector('.meter__meter-progress');
 const form = document.form;
 const total = document.getElementsByClassName('.totalBudget');
 
+
+
+// Создаем класс Observable, который принимает значение value
+// с методами next
 class Observable {
     constructor(value) {
         this.value = value;
         this.subscriptions = [];
     }
 
+    // next сохраняет новое значение value и
+    // и выполняет вычисления для каждой функции в subscriptions
     next(value) {
         this.value = value;
         this.subscriptions.forEach(fn => {
@@ -17,13 +23,17 @@ class Observable {
         });
     }
 
+    // метод для добавления нового обработчика для элементов
     subscribe(fn) {
         this.subscriptions.push(fn);
     }
 }
 
+/// создаем экземпляр класса Observable
 const categories = new Observable([]);
 
+
+/// повесим обработчик на кнопку +
 button.addEventListener('click', () => {
 
     const obj = {
@@ -33,31 +43,21 @@ button.addEventListener('click', () => {
         left: Number(form.plan.value - form.spent.value)
     };
 
-    // if (obj.left <0) {
-    //     console.log(`Внимание! Превышен лимит категории ${obj.category}`);
-    // }
-
-    // function limitAlert(categories) {
-    //     let limit = ``;
-    //     categories.forEach((item, id) => {
-    //         if (obj.left <0) {
-    //             limit +=`
-    //             <div class "alert"> Внимание! Превышен лимит категории ${obj.category} </div>
-    //             `;
-    //     }
-    //     });
-    // }
-
+    // очищаем все поля ввода в форме
     for (let field of form) {
         field.value = '';
     }
-
+    // обновляем данные в категориях
     categories.next([...categories.value, obj]);
 });
 
+// Создаем интерфейс для категорий
 function generateHtml(categories) {
     let html = ``;
     categories.forEach((item, id) => {
+        // Создаем теги для отображения информации о категориях
+        // сохраняем идентификаторы в аттрибуте data-id
+        // если в категории мы потратили больше, чем запланировали, то выводим предупреждение
         html = `
                 <div class="row">
                     <div class="col-3">
@@ -83,7 +83,10 @@ function generateHtml(categories) {
 }
 
 
+// добавляем обработчик кликов на кнопки удаления категорий
 document.addEventListener('click', (e) => {
+    /// Если "кликнутый" элемент содержит класс `button-delete`
+    /// то удаляем его из объека categories
     if (e.target.classList.contains('button-delete')) {
         const dataID = Number(e.target.getAttribute('data-id'));
         const filteredCategories = categories.value.filter((el, i) => {
@@ -93,12 +96,17 @@ document.addEventListener('click', (e) => {
     }
 });
 
+
+// при изменении значения существующих категорий...
 document.addEventListener('change', function (e) {
+    /// если измененный элемент содержит класс `square__text-input`
     if (e.target.classList.contains('square__text-input')) {
         const data = e.target.getAttribute('data-id')
         const value = e.target.value
+        /// деструктурируем данные из data-аттрибута
         const [field, id] = data.split('_');
         console.log(field, id);
+        /// сохраним измененные данные в массиве
         const elements = categories.value.map((el, i) => {
             if (i === Number(id)) {
                 el[field] = value
@@ -106,17 +114,21 @@ document.addEventListener('change', function (e) {
             }
             return el
         })
+        /// обновим
         categories.next(elements)
     }
 })
 
+// добавим обработчик для отрисовки изменений
 categories.subscribe((items) => {
     const html = generateHtml(items);
     content.innerHTML = html;
+    // сохраним в локальном хранилище
     localStorage.setItem('cats', JSON.stringify(items));
 });
 
 
+// обновим значение progressBar
 categories.subscribe((items) => {
     const sumTotal = items.reduce((acc, budget) => {
         return acc + budget.plan;
@@ -131,7 +143,9 @@ categories.subscribe((items) => {
     progressBar.style.width = (progress * 100) + '%';
 });
 
+// получим значения из локального хранилища
 const items = localStorage.getItem('cats');
 
+// если данные ранее были сохранены, то загрузим их в память
 if (items)
     categories.next(JSON.parse(items));
