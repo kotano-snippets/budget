@@ -1,0 +1,238 @@
+body {
+    background: rgba(229, 197, 240, 0.15);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mainScreen {
+    /* Фон_первый экран */
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+
+    background: linear-gradient(118.74deg, rgba(209, 152, 228, 0.56) 62.27%, rgba(255, 255, 255, 0) 100%), #FFFFFF;
+}
+
+.subheading {
+    /* Подзаголовок_главный */
+    position: absolute;
+    width: 869px;
+    height: 28px;
+    left: 122px;
+    top: 80px;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.heading {
+    /* Заголовок_главный */
+    position: absolute;
+    width: 720px;
+    height: 70px;
+    left: 122px;
+    top: 140px;
+
+    font-weight: 500;
+    font-size: 60px;
+    line-height: 70px;
+    text-align: center;
+    color: #000000;
+}
+
+.description {
+    /* Описание */
+    position: absolute;
+    width: 772px;
+    height: 83px;
+    left: 122px;
+    top: 234px;
+
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+
+.container {
+    margin: 480px auto;
+    width: 1100px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    box-sizing: border-box;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-1 {
+    flex-basis: calc(100% * 1 / 12);
+}
+
+.col-2 {
+    flex-basis: calc(100% * 2 / 12);
+}
+
+.col-3 {
+    flex-basis: calc(100% * 3 / 12);
+}
+
+.col-4 {
+    flex-basis: calc(100% * 4 / 12);
+}
+
+.col-5 {
+    flex-basis: calc(100% * 5 / 12);
+}
+
+.col-6 {
+    flex-basis: calc(100% * 6 / 12);
+}
+
+.col-7 {
+    flex-basis: calc(100% * 7 / 12);
+}
+
+.col-8 {
+    flex-basis: calc(100% * 8 / 12);
+}
+
+.col-9 {
+    flex-basis: calc(100% * 9 / 12);
+}
+
+.col-10 {
+    flex-basis: calc(100% * 10 / 12);
+}
+
+.col-11 {
+    flex-basis: calc(100% * 11 / 12);
+}
+
+.col-12 {
+    flex-basis: calc(100% * 12 / 12);
+}
+
+.square {
+    box-sizing: border-box;
+    width: 100%;
+    height: 48px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    display: flex;
+}
+
+.square--header {
+    background: rgba(229, 197, 240, 0.6);
+}
+
+.square__text {
+    margin: auto;
+}
+
+.square__text--y {
+    margin: auto 0;
+    margin-left: 10px;
+}
+
+.square__text--bold {
+    font-weight: bold;
+}
+
+.calc-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    margin: auto;
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.button:hover {
+    background: #E5C5F0;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.meter {
+    width: 100%;
+    position: relative;
+    height: 48px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.meter__meter-progress {
+    position: absolute;
+    width: 100%;
+    background: #E5C5F0;
+    height: 100%;
+    border-radius: 20px;
+    transition: width ease-in-out .5s;
+}
+
+.button-delete {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+.button-delete:hover {
+    background: #E5C5F0;
+}
+
+.button-edit {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    left: -37px;
+
+}
+
+.button-edit:hover {
+    background: #E5C5F0;
+}
+
+.alert {
+    display: flex;
+    margin-bottom: auto;
+    letter-spacing: 0.2em;
+    color: #7B00A5;
+}
+
+.square__text-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
